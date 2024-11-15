@@ -9,6 +9,15 @@ try:
     # Download the best quality video available
     ydl_options = {'format': 'best'}
 
+    # # Options to include subtitles
+    # ydl_options = {
+    #     'format': 'best',                # Download the best quality video
+    #     'writesubtitles': True,          # Download subtitles if available
+    #     'subtitleslangs': ['en'],        # Preferred subtitle language (e.g., 'en' for English)
+    #     'subtitlesformat': 'srt',        # Subtitle format (e.g., 'srt' or 'vtt')
+    #     'outtmpl': '%(title)s.%(ext)s'   # Save video with its title as the filename
+    # }
+
     # Create a downloader object and download the video
     with yt_dlp.YoutubeDL(ydl_options) as downloader:
         downloader.download([url])
@@ -16,33 +25,3 @@ try:
     print("Video downloaded successfully!")
 except Exception as e:
     print("An error occurred while downloading the video:", e)
-
-
-# A script to download YouTube videos using yt-dlp.
-
-# import yt_dlp
-#
-#
-# def download_video(url: str):
-#    """Downloads a YouTube video given its URL."""
-#    ydl_opts = {
-#        # Save file as video title with proper extension
-#        'outtmpl': '%(title)s.%(ext)s',
-#        'format': 'bestvideo+bestaudio/best',  # Get best quality video and audio
-#    }
-#    try:
-#        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-#            ydl.download([url])
-#        print("Video downloaded successfully!")
-#    except Exception as e:
-#        print(f"An error occurred: {e}")
-#
-#
-# if __name__ == "__main__":
-#    # Input video URL
-#    url = input("Enter video URL: ").strip()
-#    if url:
-#        download_video(url)
-#    else:
-#        print("No URL entered. Exiting...")
-#
