@@ -9,7 +9,7 @@ try:
     # Download the best quality video available
     ydl_options = {'format': 'best'}
 
-    # # Options to include subtitles
+    # Options to include subtitles
     # ydl_options = {
     #     'format': 'best',                # Download the best quality video
     #     'writesubtitles': True,          # Download subtitles if available
