@@ -29,6 +29,8 @@ class BankAccount:
 
     def transfer(self, amount):
         if amount <= self.balance:
+            beneficiary = input(
+                "Please enter Beneficiary Account Number or Name: ")
             # check for case sensitivity and solve the error using .title()
             print(f"1. Transfer to {self.bank_name}")
             print("2. Transfer to Other Banks")
@@ -36,8 +38,10 @@ class BankAccount:
             # print("0. Main")
             transfer_to = input("Transfer to: ")
             if transfer_to in ["1", f"Transfer to {self.bank_name}"]:
-                print
-            self.balance -= amount
+                # print("Please enter your PIN: ") add the algorithm for this
+                print(beneficiary)
+                print(f"Do you wish to send money to")
+                self.balance -= amount
 
     def check_balance(self):
         print(f"Account balance: ${self.balance}")
