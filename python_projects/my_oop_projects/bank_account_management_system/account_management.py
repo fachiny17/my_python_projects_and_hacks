@@ -1,3 +1,9 @@
+# Additional features
+# print("00. Back")
+# print("0. Main")
+# addition of PIN
+
+
 class BankAccount:
     def __init__(self, account_number, owner, bank_name, balance=0):
         self.account_number = account_number
@@ -9,6 +15,8 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
         print(f"Deposited ${amount}. New balance is ${self.balance}")
+        # print("00. Back")
+        # print("0. Main")
 
     def withdraw(self, amount):
         if amount <= self.balance:
@@ -21,15 +29,25 @@ class BankAccount:
 
     def transfer(self, amount):
         if amount <= self.balance:
-            print("1. Transfer to")
+            # check for case sensitivity and solve the error using .title()
+            print(f"1. Transfer to {self.bank_name}")
+            print("2. Transfer to Other Banks")
+            # print("00. Back")
+            # print("0. Main")
+            transfer_to = input("Transfer to: ")
+            if transfer_to in ["1", f"Transfer to {self.bank_name}"]:
+                print
             self.balance -= amount
 
     def check_balance(self):
         print(f"Account balance: ${self.balance}")
+        # print("00. Back")
+        # print("0. Main")
 
 
 account_number = input("Enter account number: ")
 owner = input("Enter your name: ")
+bank_name = input("Enter your Bank name: ")
 account = BankAccount(account_number, owner)
 while True:
     print("\nBank Account Menu")
