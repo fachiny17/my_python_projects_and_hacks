@@ -38,7 +38,6 @@ class BankAccount:
             # print("0. Main")
             transfer_to = input("Transfer to: ")
             if transfer_to in ["1", f"Transfer to {self.bank_name}"]:
-                # print("Please enter your PIN: ") add the algorithm for this
                 confirm = input(f"Do you wish to send money to send money to {
                                 beneficiary}? \n1. Yes\n2. No\nEnter:")
                 if confirm in ["1", "Yes".lower()]:
@@ -97,3 +96,8 @@ while True:
 
     else:
         print("Invalid choice. Please choose from the options provided above.")
+
+
+# Next steps:
+# 1. create a file called my_pin.txt where the original PIN is stored so that yo can confirm it with the user_pin(PIN provided by user when he/she wants to perform a transaction)
+# 2. complete the option, Transfer to Other Banks in the Transfer section
