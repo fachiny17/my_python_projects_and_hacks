@@ -5,12 +5,11 @@
 
 
 class BankAccount:
-    def __init__(self, account_number, owner, bank_name, pin, balance=0):
+    def __init__(self, account_number, owner, bank_name, balance=0):
         self.account_number = account_number
         self.owner = owner
         self.bank_name = bank_name
         self.balance = balance
-        self.pin = pin
 
     # Add buy airtime, buy data, account opening
     def deposit(self, amount):
@@ -28,7 +27,7 @@ class BankAccount:
             print(f"Insufficient balance! \nYou cannot withdraw ${
                   amount} because your balance is only ${self.balance}")
 
-    def transfer(self, amount):
+    def transfer(self, amount, user_pin):
         if self.balance >= amount:
             beneficiary = input(
                 "Please enter Beneficiary Account Number or Name: ")
@@ -43,8 +42,12 @@ class BankAccount:
                 confirm = input(f"Do you wish to send money to send money to {
                                 beneficiary}? \n1. Yes\n2. No\nEnter:")
                 if confirm in ["1", "Yes".lower()]:
-                    self.balance -= amount
-                    print("Transaction successful!")
+                    user_pin = input("Enter PIN: ")
+                    if user_pin == confirmed_pin:
+                        self.balance -= amount
+                        print("Transaction successful!")
+                    else:
+                        print("Incorrect PIN!")
                 # elif confirm in ["2", "No"]:
                 #   algorithm to return back to Main Option
                 else:
@@ -85,7 +88,8 @@ while True:
 
     elif choice in ["4", "Transfer".lower()]:
         amount = float(input("Enter amount to transfer: "))
-        account.transfer(amount)
+        confirmed_pin = input("Enter your 4-digit PIN: ")
+        account.transfer(amount, confirmed_pin)
 
     elif choice in ["5", "Exit".lower()]:
         print("Exiting the Bank Account Management System. Thanks for banking with us!")
