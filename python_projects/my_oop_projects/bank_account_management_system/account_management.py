@@ -5,16 +5,17 @@
 
 
 class BankAccount:
-    def __init__(self, account_number, owner, bank_name, balance=0):
+    def __init__(self, account_number, owner, bank_name, pin, balance=0):
         self.account_number = account_number
         self.owner = owner
         self.bank_name = bank_name
         self.balance = balance
+        self.pin = pin
 
     # Add buy airtime, buy data, account opening
     def deposit(self, amount):
         self.balance += amount
-        print(f"Deposited ${amount}. New balance is ${self.balance}")
+        print(f"Deposited ${amount}, New balance is ${self.balance}")
         # print("00. Back")
         # print("0. Main")
 
@@ -39,9 +40,9 @@ class BankAccount:
             transfer_to = input("Transfer to: ")
             if transfer_to in ["1", f"Transfer to {self.bank_name}"]:
                 # print("Please enter your PIN: ") add the algorithm for this
-                confirm = print(f"Do you wish to send money to send money to {
-                                beneficiary}? \n1. Yes\n2. No")
-                if confirm in ["1", "Yes"]:
+                confirm = input(f"Do you wish to send money to send money to {
+                                beneficiary}? \n1. Yes\n2. No\nEnter:")
+                if confirm in ["1", "Yes".lower()]:
                     self.balance -= amount
                     print("Transaction successful!")
                 # elif confirm in ["2", "No"]:
@@ -71,22 +72,22 @@ while True:
 
     choice = input("Enter your choice from the above options: ")
 
-    if choice in ["1", "Deposit"]:
+    if choice in ["1", "Deposit".lower()]:
         amount = float(input("Enter amount to deposit: "))
         account.deposit(amount)
 
-    elif choice in ["2", "Withdraw"]:
+    elif choice in ["2", "Withdraw".lower()]:
         amount = float(input("Enter the amount to withdraw: "))
         account.withdraw(amount)
 
-    elif choice in ["3", "Check Balance"]:
+    elif choice in ["3", "Check Balance".lower()]:
         account.check_balance()
 
-    elif choice in ["4", "Transfer"]:
+    elif choice in ["4", "Transfer".lower()]:
         amount = float(input("Enter amount to transfer: "))
         account.transfer(amount)
 
-    elif choice in ["5", "Exit"]:
+    elif choice in ["5", "Exit".lower()]:
         print("Exiting the Bank Account Management System. Thanks for banking with us!")
         break
 
