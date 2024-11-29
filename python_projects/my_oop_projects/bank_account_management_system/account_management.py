@@ -18,11 +18,15 @@ class BankAccount:
         # print("00. Back")
         # print("0. Main")
 
-    def withdraw(self, amount):
+    def withdraw(self, amount, user_pin):
         if amount <= self.balance:
-            self.balance -= amount
-            print(f"Debit alert! \nDear {self.owner}, you have successfully withdrawn ${
-                  amount}. New balance is ${self.balance}. \nThanks for banking with us.")
+            user_pin = input("Enter PIN: ")
+            if user_pin == confirmed_pin:
+                self.balance -= amount
+                print(f"Debit alert! \nDear {self.owner}, you have successfully withdrawn ${
+                      amount}. New balance is ${self.balance}. \nThanks for banking with us.")
+            else:
+                print("Incorrect PIN!")
         else:
             print(f"Insufficient balance! \nYou cannot withdraw ${
                   amount} because your balance is only ${self.balance}")
@@ -80,7 +84,8 @@ while True:
 
     elif choice in ["2", "Withdraw".lower()]:
         amount = float(input("Enter the amount to withdraw: "))
-        account.withdraw(amount)
+        confirmed_pin = input("Enter your 4-digit PIN: ")
+        account.withdraw(amount, confirmed_pin)
 
     elif choice in ["3", "Check Balance".lower()]:
         account.check_balance()
